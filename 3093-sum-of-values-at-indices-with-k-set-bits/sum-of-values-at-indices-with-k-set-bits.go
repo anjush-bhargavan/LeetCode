@@ -1,15 +1,15 @@
 func sumIndicesWithKSetBits(nums []int, k int) int {
-    sum:=0
-    for i:=0;i<len(nums);i++{
-        b:=strconv.FormatInt(int64(i),2)
-        bNum,_ := strconv.Atoi(b)
-        sumB:=0
-        for bNum>0{
-            sumB+=bNum%10
-            bNum/=10
+    sum := 0
+    for i := 0 ; i < len(nums) ; i++ {
+        bStr := strconv.FormatInt(int64(i),2)
+        count := 0
+        for _,s := range bStr {
+           if s == '1'{
+               count++
+           }
         }
-        if sumB==k{
-            sum+=nums[i]
+        if count == k {
+            sum += nums[i]
         }
     }
     return sum
