@@ -12,9 +12,8 @@ func frequencySort(s string) string {
     result := ""
     sortedArr := MergeSort(arr)
     for i := len(sortedArr)-1 ; i >= 0 ; i-- {
-        for j := 0 ; j < sortedArr[i][1] ; j++ {
-            result += string(sortedArr[i][0])
-        }
+       rs := strings.Repeat(string(sortedArr[i][0]),sortedArr[i][1])
+       result += rs
     }
    return result
 }
