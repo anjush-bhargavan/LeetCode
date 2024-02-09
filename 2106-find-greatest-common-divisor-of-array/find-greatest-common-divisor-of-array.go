@@ -1,7 +1,7 @@
 func findGCD(nums []int) int {
     sort.Ints(nums)
     min,max := nums[0],nums[len(nums)-1]
-    for i := max ; i >= 1 ; i-- {
+    for i := min ; i >= 1 ; i-- {
         if Divisor(min,max,i){
             return i
         } 
