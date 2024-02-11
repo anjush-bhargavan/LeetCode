@@ -1,15 +1,14 @@
 func rearrangeArray(nums []int) []int {
-    negArray,posArray,result := []int{},[]int{},[]int{}
-    for i := 0 ; i < len(nums) ; i++ {
+    result := make([]int,len(nums))
+    pos,neg := 0,1
+    for i := 0 ; i < len(nums); i++{
         if nums[i] < 0 {
-            negArray = append(negArray,nums[i])
+            result[neg] = nums[i]
+            neg += 2
         }else{
-            posArray = append(posArray,nums[i])
+            result[pos] = nums[i]
+            pos += 2
         }
-    }
-    for i := 0 ; i < len(posArray) ; i++ {
-        result = append(result,posArray[i])
-        result = append(result,negArray[i])
-    }
+    } 
     return result
 }
