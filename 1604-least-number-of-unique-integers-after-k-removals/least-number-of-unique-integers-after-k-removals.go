@@ -4,14 +4,16 @@ func findLeastNumOfUniqueInts(arr []int, k int) int {
     for i := 0 ; i < len(arr) ; i++ {
         intMap[arr[i]]++
     }
+    
     nums := [][]int{}
     for k,v := range intMap {
         temp := []int{k,v}
         nums = append(nums,temp)
     }
+
     sortedArr := MergeSort(nums)
+
     j,count := 0,0
-    fmt.Println(sortedArr)
     for i := 0 ; i < len(sortedArr) ; i++ {
         if j < k {
             j += sortedArr[i][1]
