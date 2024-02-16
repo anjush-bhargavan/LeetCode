@@ -4,62 +4,31 @@ func findLeastNumOfUniqueInts(arr []int, k int) int {
     for i := 0 ; i < len(arr) ; i++ {
         intMap[arr[i]]++
     }
-    
-    nums := [][]int{}
-    for k,v := range intMap {
-        temp := []int{k,v}
-        nums = append(nums,temp)
-    }
 
-    sortedArr := MergeSort(nums)
+    sortedArr := sortValue(intMap)
 
-    j,count := 0,0
-    for i := 0 ; i < len(sortedArr) ; i++ {
-        if j < k {
-            j += sortedArr[i][1]
-        }else{
-            break
-        }
-        count++
+    count := 0
+    for i := 0 ; k > 0 ; i++ {
+       if k >= intMap[sortedArr[i]] {
+           k -= intMap[sortedArr[i]]
+           count++
+       }else{
+           break
+       }
     }
-    if j > k {
-        return len(intMap) - count + 1
-    }
+  
     return len(intMap) - count
 
 }
 
 
-func MergeSort(arr [][]int) [][]int {
-    if len(arr) == 1 {
-        return arr
+func sortValue (mp map[int]int) []int{
+    var sortedKeys []int
+    for keys:= range mp{
+        sortedKeys=append(sortedKeys,keys)
     }
-    mid := len(arr)/2
-    left := MergeSort(arr[:mid])
-    right := MergeSort(arr[mid:])
-
-    return merge(left,right)
-}
-
-func merge(arr1,arr2 [][]int) [][]int {
-	combined:=[][]int{}
-	i,j:=0,0
-	for i<len(arr1) && j <len(arr2){
-		if arr1[i][1] < arr2[j][1]{
-            combined = append(combined,arr1[i])
-            i++
-		}else{
-			combined = append(combined,arr2[j])
-            j++
-		}
-	}
-	for i < len(arr1){
-	    combined = append(combined,arr1[i])
-        i++
-	}
-	for j < len(arr2){
-		combined = append(combined,arr2[j])
-        j++
-	}
-	return combined
+    sort.Slice(sortedKeys,func(i,j int) bool{
+        return mp[sortedKeys[i]]<mp[sortedKeys[j]]
+    })
+    return sortedKeys
 }
