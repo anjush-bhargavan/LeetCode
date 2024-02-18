@@ -8,7 +8,6 @@
  */
 func deepestLeavesSum(root *TreeNode) int {
     count,sum,d := 1,0,0
-    // d := depth(root)
 
     LeavesSum(root,&count,&sum,&d)
     return sum
