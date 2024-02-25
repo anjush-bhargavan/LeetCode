@@ -23,7 +23,6 @@ func TwinSum(head *ListNode) *ListNode {
     sec := mid.Next
     mid.Next = nil
     rev := Reverse(sec)
-    fmt.Println(rev)
     newList := &ListNode{}
     curr := newList
     for rev != nil {
