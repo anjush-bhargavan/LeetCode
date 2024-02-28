@@ -4,9 +4,5 @@ func twoEggDrop(n int) int {
         sum += i
         num = i
     }
-    // fmt.Println(sum)
-    // // if sum - n > n/2 {
-    // //     return num - 1
-    // // }
     return num
 }
