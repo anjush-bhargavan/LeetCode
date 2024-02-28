@@ -1,25 +1,15 @@
 func canVisitAllRooms(rooms [][]int) bool {
     keyMap := make(map[int]bool)
-    keyMap[0] = true
-    i,flag := 0,false
-    for {
-        if keyMap[i] {
-            for j := 0 ; j < len(rooms[i]) ; j++ {
-                if !keyMap[rooms[i][j]] {
-                    keyMap[rooms[i][j]] = true
-                    flag = true
-                }
-            }
-        }
-        i++
-        if i == len(rooms) {
-            if flag {
-                i = 0
-                flag = false
-            }else{
-                break
-            }
+    DFS(rooms,keyMap,0)
+    return len(keyMap) == len(rooms)
+}
+
+
+func DFS(arr [][]int,keyMap map[int]bool,val int) {
+    keyMap[val] = true
+    for _,v := range arr[val] {
+        if !keyMap[v] {
+            DFS(arr,keyMap,v)
         }
     }
-    return len(keyMap) == len(rooms)
 }
