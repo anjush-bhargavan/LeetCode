@@ -17,7 +17,6 @@ func findBottomLeftValue(root *TreeNode) int {
 
 func LeftVal(node *TreeNode,count,maxCount,min *int) {
     if node.Left == nil && node.Right == nil {
-        fmt.Println(*count,node.Val)
         if *count > *maxCount {
             *min = node.Val
             *maxCount = *count
