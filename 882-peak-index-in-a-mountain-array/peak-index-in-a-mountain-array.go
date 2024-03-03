@@ -1,7 +1,13 @@
 func peakIndexInMountainArray(arr []int) int {
-    for i := 0 ; i < len(arr) ; i++ {
-        if arr[i] > arr[i+1] {
-            return i
+    low , high := 0, len(arr)-1
+    for low <= high {
+        mid := (low + high)/2
+        if arr[mid] > arr[mid-1] && arr[mid] > arr[mid+1] {
+            return mid
+        }else if arr[mid] < arr[mid+1] {
+            low = mid
+        }else {
+            high = mid
         }
     }
     return 0
