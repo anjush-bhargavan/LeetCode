@@ -1,17 +1,14 @@
 func findJudge(n int, trust [][]int) int {
-    person := make(map[int][]int)
-    trusting := make(map[int]bool)
-    if n == 1 {
-        return n
-    }
+    person := make(map[int]int)
+    trusting := make(map[int]int)
 
     for i := 0 ; i < len(trust) ; i++ {
-        person[trust[i][1]] = append(person[trust[i][1]],trust[i][0])
-        trusting[trust[i][0]] = true
+        person[trust[i][1]]++
+        trusting[trust[i][0]]++
     }
-    for k,v := range person {
-        if len(v) == n-1 && !trusting[k]{
-            return k
+    for i := 1 ; i <= n ; i++ {
+        if person[i] == n-1 && trusting[i] == 0 {
+            return i
         }
     }
     return -1
