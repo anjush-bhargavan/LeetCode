@@ -1,13 +1,9 @@
 func shipWithinDays(weights []int, days int) int {
-    arr := make([]int,len(weights))
-    copy(arr,weights)
-    sort.Ints(arr)
-    n := int(math.Ceil(float64(len(arr))/float64(days)))
     sum := 0
-    for i := len(arr)-n ; i < len(arr); i ++  {
-        sum += arr[i]
+    for i := 0 ; i < len(weights); i ++  {
+        sum += weights[i]
     }
-    min,max := arr[len(arr)-1],sum
+    min,max := weights[0],sum
     result := 0
     for min <= max {
         mid := (min+max)/2
