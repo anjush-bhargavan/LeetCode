@@ -4,9 +4,7 @@ func maxFrequencyElements(nums []int) int {
 
     for i := 0 ; i < len(nums) ; i++ {
         numMap[nums[i]]++
-    }
-
-    for _,v := range numMap {
+        v := numMap[nums[i]]
         if max <= v {
             if max == v {
                 total += v
