@@ -6,20 +6,20 @@
  * }
  */
 func isPalindrome(head *ListNode) bool {
-    mid := Middle(head)
-    second := mid.Next
-    mid.Next = nil
+    mid := Middle(head) //finds the middle
+    second := mid.Next // second will be the head reference of the linkedlist after the middle. 
+    mid.Next = nil     // disconnecting the linked list after the middle
 
-    secondReversed := Reverse(second)
+    second = Reverse(second) //reversing the second part which we disconnected
     
-    for head != nil && secondReversed != nil {
-        if head.Val != secondReversed.Val {
+    for head != nil && second != nil {
+        if head.Val != second.Val {   //checking each node values are same or not. if not we return false
             return false
         }
         head = head.Next
-        secondReversed = secondReversed.Next
+        second = second.Next
     }
-    return true
+    return true // after one of them become nil we return true.
 }
 
 //Middle function is to find  the middle node of the linked list.
