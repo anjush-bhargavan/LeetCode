@@ -1,14 +1,12 @@
 func findDuplicates(nums []int) []int {
     result := []int{}
-    numMap := make(map[int]bool)
-
     for i := 0 ; i < len(nums) ; i++ {
-        if !numMap[nums[i]] {
-            numMap[nums[i]] = true
+        if nums[int(math.Abs(float64(nums[i])))-1] > 0 {
+            nums[int(math.Abs(float64(nums[i])))-1] *= -1
         }else{
-            result = append(result,nums[i])
+            result = append(result,int(math.Abs(float64(nums[i]))))
+    
         }
     }
-    
     return result
 }
