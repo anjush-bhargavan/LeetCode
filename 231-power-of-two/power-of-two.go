@@ -1,10 +1,3 @@
 func isPowerOfTwo(n int) bool {
-    if n <= 0  {
-        return false
-    }
-    result := 1 
-    for result < n {
-        result *= 2
-    }
-    return result == n
+   return n > 0 && (n & (n-1) == 0)
 }
