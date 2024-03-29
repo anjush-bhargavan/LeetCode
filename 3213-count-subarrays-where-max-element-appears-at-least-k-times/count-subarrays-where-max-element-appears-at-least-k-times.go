@@ -12,8 +12,7 @@ func countSubarrays(nums []int, k int) int64 {
             i++
         }
         if countMax == k {
-            count += i+1
-            fmt.Println(i,count)
+            count += i + 1
         }
     }
     return int64(count)
