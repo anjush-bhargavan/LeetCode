@@ -10,7 +10,6 @@ func sumNumbers(root *TreeNode) int {
     arr := []int{}
     sum,total := 0,0
     PathSums(root,&arr,&sum)
-    fmt.Println(arr)
     for _,s := range arr {
         total += s
     }
@@ -28,7 +27,6 @@ func PathSums(root *TreeNode,arr *[]int,sum *int) {
         *sum = (*sum * 10) + root.Val
         PathSums(root.Left,arr,sum)
         PathSums(root.Right,arr,sum)
-        *sum /= 10
-        
+        *sum /= 10   
     }
 }
