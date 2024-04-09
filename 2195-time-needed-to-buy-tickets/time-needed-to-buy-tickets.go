@@ -1,18 +1,11 @@
 func timeRequiredToBuy(tickets []int, k int) int {
     count := 0
-    personMap := make(map[int]int)
-    for i := 0 ; i < len(tickets) ; i++ {
-        personMap[i] = tickets[i]
-    }
-    i := 0
-    for personMap[k] > 0 {
-        if personMap[i] > 0 {
-            personMap[i]--
-            count++
-        }
-        i++
-        if i == len(tickets) {
-            i = 0
+    target := tickets[k]
+    for i,v := range tickets {
+        if i <= k {
+            count += min(v,target)
+        }else {
+            count += min(v,target-1)
         }
     }
     return count
