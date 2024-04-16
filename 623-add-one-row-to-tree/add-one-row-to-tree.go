@@ -12,28 +12,19 @@ func addOneRow(root *TreeNode, val int, depth int) *TreeNode {
         return root
     }
     if depth == 1 {
-            newNode := &TreeNode{Val:val}
-            newNode.Left = root
-            return newNode
+        return &TreeNode{Val:val,Left:root}
     }
     if d > depth  {
         return root
     }
     if d  == depth {
-
-            newNode1 := &TreeNode{Val:val}
-            newNode1.Left = root.Left
-            root.Left = newNode1
-
-            newNode2 := &TreeNode{Val:val}
-            newNode2.Right = root.Right
-            root.Right = newNode2
-
+        root.Left = &TreeNode{Val:val,Left:root.Left}
+        root.Right = &TreeNode{Val:val,Right:root.Right}
         return root
     }
     d++
-    _ = addOneRow(root.Left, val, depth)
-    _ = addOneRow(root.Right, val, depth)
+    root.Left = addOneRow(root.Left, val, depth)
+    root.Right = addOneRow(root.Right, val, depth)
     d--
     return root
 }
