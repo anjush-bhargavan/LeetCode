@@ -9,17 +9,13 @@ func removeNodes(head *ListNode) *ListNode {
     arr := []int{}
     curr := head 
     for curr != nil {
-        arr = append(arr,curr.Val)
+        for len(arr) != 0 && arr[len(arr)-1] < curr.Val {
+            arr = arr[:len(arr)-1]
+        }
+        if len(arr) == 0 || arr[len(arr)-1] >= curr.Val {
+            arr = append(arr,curr.Val)
+        }
         curr = curr.Next
-    }
-    max := arr[len(arr)-1]
-    for i := len(arr)-2 ; i >= 0 ; i-- {
-        if max > arr[i] {
-            arr = append(arr[:i],arr[i+1:]...)
-        }
-        if max < arr[i] {
-            max = arr[i]
-        }
     }
 
    newList := &ListNode{Val:arr[0]}
